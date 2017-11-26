@@ -29,7 +29,7 @@ import time
 import weewx.drivers
 
 DRIVER_NAME = 'AWS'
-DRIVER_VERSION = '0.1'
+DRIVER_VERSION = '0.2'
 
 
 def loader(config_dict, _):
@@ -145,6 +145,11 @@ class AWSDriver(weewx.drivers.AbstractDevice):
           [2]wind direction compass
           [3]temperature
           [4]barometer
+	  [5]humidity
+	  [6]event rain
+	  [7]daily rain
+	  [8]battery level
+	  [9]light level
         """
         
         data = {}
