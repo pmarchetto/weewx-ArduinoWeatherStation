@@ -13,7 +13,7 @@
 
 
 
-"""Driver for Arduion Weather Station.
+"""Driver for Arduino Weather Station.
 
 See here for more info:
 
@@ -166,8 +166,11 @@ class AWSDriver(weewx.drivers.AbstractDevice):
             data['windDir'] = float(parts[1])
 
             # these might have to be renamed
-            #data['temperature'] = float(parts[2])
-            #data['barometer'] = float(parts[3])
+            data['outTemp'] = float(parts[3])
+            data['barometer'] = float(parts[4])
+	    data['outHumidity'] = float(parts[5])
+	    data['rain'] = float(parts[6])
+	    data['radiation'] = float(parts[9])
             
             #data['windDirCompass'] = parts[2]  # wind speed compass. Unused, or probably wrong variable name.
 
