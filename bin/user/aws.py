@@ -8,7 +8,7 @@
 #
 # by wrybread@gmail.com
 #
-#
+# edited to use the SparkFun WeatherShield data stream in CSV format
 #
 
 
@@ -29,7 +29,7 @@ import time
 import weewx.drivers
 
 DRIVER_NAME = 'AWS'
-DRIVER_VERSION = '0.2'
+DRIVER_VERSION = '0.21b1'
 
 
 def loader(config_dict, _):
@@ -105,7 +105,7 @@ class AWSDriver(weewx.drivers.AbstractDevice):
 
         self.baudrate = 9600
         self.timeout = 10 # changed from 60
-        self.serial_port = None
+        self.serial_port = /dev/ttyACM0
 
         try:        
             self.serial_port = serial.Serial(self.port, self.baudrate,
@@ -164,15 +164,14 @@ class AWSDriver(weewx.drivers.AbstractDevice):
 
             data['windSpeed'] = float(parts[0])  # mph
             data['windDir'] = float(parts[1])
-
-            # these might have to be renamed
+	    data['windDirCompass'] = parts[2]
             data['outTemp'] = float(parts[3])
             data['barometer'] = float(parts[4])
 	    data['outHumidity'] = float(parts[5])
 	    data['rain'] = float(parts[6])
 	    data['radiation'] = float(parts[9])
             
-            #data['windDirCompass'] = parts[2]  # wind speed compass. Unused, or probably wrong variable name.
+            
 
         except Exception, e:
             logerr("Error parsing data: %s" % e)
