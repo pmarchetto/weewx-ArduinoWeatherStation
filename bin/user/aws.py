@@ -162,14 +162,14 @@ class AWSDriver(weewx.drivers.AbstractDevice):
             
             data = dict()
 
-            data['windSpeed'] = float(parts[0])  # mph
-            data['windDir'] = float(parts[1])
+            data['windSpeed'] = parts[0]  # mph
+            data['windDir'] = parts[1]
 	    data['windDirCompass'] = parts[2]
-            data['outTemp'] = float(parts[3])
-            data['barometer'] = float(parts[4])
-	    data['outHumidity'] = float(parts[5])
-	    data['rain'] = float(parts[6])
-	    data['radiation'] = float(parts[9])
+            data['outTemp'] = parts[3]
+            data['barometer'] = parts[4]
+	    data['outHumidity'] = parts[5]
+	    data['rain'] = parts[6]
+	    data['radiation'] = parts[9]
             
             
 
